@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Google OAuth Example</title>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id"
+    content="224785123046-rlrefv1q72jq0rltiogappaqguuqua69.apps.googleusercontent.com">
+</head>
+
+<body>
+  <h1>Google OAuth Example</h1>
+  <div id="login-button" class="g-signin2" data-onsuccess="onSignIn"></div>
+  <button onclick="signOut()">Sign out</button>
+  <div id="user-info"></div>
+
+  <script>
+    // Inisialisasi Google Sign-In Client
+    function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      document.getElementById('user-info').innerHTML = 'Welcome, ' + profile.getName();
+    }
+
+    // Fungsi untuk sign out
+    function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        document.getElementById('user-info').innerHTML = 'Signed out successfully.';
+      });
+    }
+
+  </script>
+</body>
+
+</html>
