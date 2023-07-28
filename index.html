@@ -23,11 +23,13 @@
 
     // Fungsi untuk sign out
     function signOut() {
-      var auth2 = gapi.auth2.getAuthInstance();
-      auth2.signOut().then(function () {
-        document.getElementById('user-info').innerHTML = 'Signed out successfully.';
-      });
-    }
+  var auth2 = gapi.auth2.getAuthInstance();
+  auth2.signOut().then(function () {
+    document.getElementById('user-info').innerHTML = 'Signed out successfully.';
+    auth2.disconnect(); // Add this line to remove the user's cached credentials
+  });
+}
+
 
   </script>
 </body>
